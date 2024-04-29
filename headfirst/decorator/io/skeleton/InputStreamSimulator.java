@@ -18,13 +18,16 @@ public class InputStreamSimulator {
 				InputStream in = new ByteArrayInputStream(exampleString.getBytes("UTF-8"));
 
 				// The following code block should work after your extension //
+				InputStream inputStream = new ShiftInputStream(new BufferedInputStream(in), -1);
 				// 1 using more decorators :
 				// InputStream inputStream = new ShiftInputStream(new LowerCaseInputStream(new
-				// BufferedInputStream(in)), 1);
+				// BufferedInputStream(in)),
+				// -1);
 				// 2 even more !:
-				// InputStream inputStream = new ShiftInputStream(new ShiftInputStream(new
-				// LowerCaseInputStream(new BufferedInputStream(in)), 4),-4);
-				InputStream inputStream = new LowerCaseInputStream(in);
+				// InputStream inputStream = new ShiftInputStream(
+				// new ShiftInputStream(new LowerCaseInputStream(new BufferedInputStream(in)),
+				// 4), -4);
+				// InputStream inputStream = new LowerCaseInputStream(in);
 				while ((c = inputStream.read()) >= 0)
 					System.out.print((char) c);
 
